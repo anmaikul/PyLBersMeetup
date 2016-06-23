@@ -1,0 +1,1005 @@
+\documentclass[ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \let\insertsectionnumber\relax
+    \let\sectionname\relax
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
+}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\date{}
+
+\begin{document}
+
+\begin{frame}[fragile]{Data Analysis Pipeline}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Data Collection, Cleaning, Munging (Numpy, Pandas)
+\item
+  Exploratory Data Analysis (Pandas, MatplotLib)
+\item
+  Either, or Both of
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Statistical Inference (SciPy, StatsModels)
+  \item
+    Model Fitting and Prediction (StatsModels, Scikit-learn)
+  \end{itemize}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Jupyter notebook}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Great for simultaneously doing all of the above in a flexible,
+  interactive environment
+
+  \begin{itemize}
+  \item
+    Simultaneously code, visualize the results of each step by placing
+    code into blocks.
+  \item
+    Embed notes (Markdown), code, math (\(A = \pi r^2\)) (LaTeX),
+    numerical results, and graphs / other visuals (e.g.~MatplotLib) all
+    in one place
+  \item
+    (Don't know if theres a way to generate slides a la knitr / slidify)
+  \end{itemize}
+\item
+  You can share any notebook with others (like passing out an
+  interactive handout, rather than some static analysis. They can
+  modify/collaborate/contribute)
+
+  A powerful interactive shell. A kernel for Jupyter. Support for
+  interactive data visualization and use of GUI toolkits. Flexible,
+  embeddable interpreters to load into your own projects. Easy to use,
+  high performance tools for parallel computing.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Jupyter examples}
+
+\CommentTok{#Running unix commands}
+\NormalTok{google_a}\OperatorTok{=!}\NormalTok{dig A www.google.com}
+\CommentTok{#google_a.grep('^www').fields(-1).s}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+<ipython-input-1-d559dd1eab99> in <module>()
+      4 google_a = get_ipython().getoutput(u'dig A www.google.com')
+      5 #google_a.grep('^www').fields(-1).s
+----> 6 wehwe
+
+
+NameError: name 'wehwe' is not defined
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Pandas}
+
+Gives Python the data structures to conveniently work with, manipulate
+data for data analysis Basic R data structures / functions, plus a bit
+of ``dplyr'' ``tidyr'' functionality Roughly speaking, this is done by
+giving the ``data frame'' object Reading/writing files directly into
+DataFrame objects
+
+Functionality to effectively manipuate data: indexing, slicing,
+subsetting data, groupby, joining,
+
+Can conveniently use pandas objects in sk-learn, statsmodels Well
+integrated with matplotlib to easily visualize data inside pandas data
+frames / series
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{%}\NormalTok{matplotlib inline}
+\ImportTok{import} \NormalTok{pandas}
+\ImportTok{import} \NormalTok{numpy}
+\ImportTok{import} \NormalTok{matplotlib}
+\ImportTok{import} \NormalTok{sklearn}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{titles }\OperatorTok{=} \NormalTok{pandas.read_csv(}\StringTok{'../pycon-pandas-tutorial/data/titles.csv'}\NormalTok{)}
+\NormalTok{titles.head()}
+
+\NormalTok{releasedate }\OperatorTok{=} \NormalTok{pandas.read_csv(}\StringTok{'../pycon-pandas-tutorial/data/release_dates.csv'}\NormalTok{,}
+                             \NormalTok{parse_dates}\OperatorTok{=}\NormalTok{[}\StringTok{'date'}\NormalTok{])}
+
+\NormalTok{cast }\OperatorTok{=} \NormalTok{pandas.read_csv(}\StringTok{'../pycon-pandas-tutorial/data/cast.csv'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{type}\NormalTok{(cast)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+pandas.core.frame.DataFrame
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast.head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>title</th>
+  <th>year</th>
+  <th>name</th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>0</th>
+  <td>Suuri illusioni</td>
+  <td>1985</td>
+  <td>Homo $</td>
+  <td>actor</td>
+  <td>Guests</td>
+  <td>22.0</td>
+</tr>
+<tr>
+  <th>1</th>
+  <td>Battle of the Sexes</td>
+  <td>2017</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Bobby Riggs Fan</td>
+  <td>10.0</td>
+</tr>
+<tr>
+  <th>2</th>
+  <td>Secret in Their Eyes</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>2002 Dodger Fan</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>3</th>
+  <td>Steve Jobs</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>1988 Opera House Patron</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>4</th>
+  <td>Straight Outta Compton</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Club Patron</td>
+  <td>NaN</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast[}\StringTok{'title'}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0           Suuri illusioni
+1       Battle of the Sexes
+2      Secret in Their Eyes
+3                Steve Jobs
+4    Straight Outta Compton
+Name: title, dtype: object
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{type}\NormalTok{(cast[}\StringTok{'title'}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+pandas.core.series.Series
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast[}\DecValTok{3}\NormalTok{:}\DecValTok{6}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>title</th>
+  <th>year</th>
+  <th>name</th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>3</th>
+  <td>Steve Jobs</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>1988 Opera House Patron</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>4</th>
+  <td>Straight Outta Compton</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Club Patron</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>5</th>
+  <td>Straight Outta Compton</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Dopeman</td>
+  <td>NaN</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast.iloc[}\DecValTok{0}\NormalTok{:}\DecValTok{10}\NormalTok{,[}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>0</th>
+  <td>actor</td>
+  <td>Guests</td>
+  <td>22.0</td>
+</tr>
+<tr>
+  <th>1</th>
+  <td>actor</td>
+  <td>Bobby Riggs Fan</td>
+  <td>10.0</td>
+</tr>
+<tr>
+  <th>2</th>
+  <td>actor</td>
+  <td>2002 Dodger Fan</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>3</th>
+  <td>actor</td>
+  <td>1988 Opera House Patron</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>4</th>
+  <td>actor</td>
+  <td>Club Patron</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>5</th>
+  <td>actor</td>
+  <td>Dopeman</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>6</th>
+  <td>actor</td>
+  <td>Thug 1</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>7</th>
+  <td>actor</td>
+  <td>Actor Playing Eteocles from 'Antigone'</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>8</th>
+  <td>actor</td>
+  <td>Two Palms - Ua'i Paame</td>
+  <td>8.0</td>
+</tr>
+<tr>
+  <th>9</th>
+  <td>actor</td>
+  <td>Chico</td>
+  <td>9.0</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast[ cast.n }\OperatorTok{==} \DecValTok{1} \NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>title</th>
+  <th>year</th>
+  <th>name</th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>95</th>
+  <td>Live Freaky Die Freaky</td>
+  <td>2006</td>
+  <td>Nick 13</td>
+  <td>actor</td>
+  <td>TV Reporter #1</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>128</th>
+  <td>All Things Fall Apart</td>
+  <td>2011</td>
+  <td>50 Cent</td>
+  <td>actor</td>
+  <td>Deon</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>133</th>
+  <td>Freelancers</td>
+  <td>2012</td>
+  <td>50 Cent</td>
+  <td>actor</td>
+  <td>Malo</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>134</th>
+  <td>Get Rich or Die Tryin'</td>
+  <td>2005</td>
+  <td>50 Cent</td>
+  <td>actor</td>
+  <td>Marcus</td>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>135</th>
+  <td>Gun</td>
+  <td>2010</td>
+  <td>50 Cent</td>
+  <td>actor</td>
+  <td>Rich</td>
+  <td>1.0</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast.dropna(how}\OperatorTok{=}\StringTok{'any'}\NormalTok{).head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>title</th>
+  <th>year</th>
+  <th>name</th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>0</th>
+  <td>Suuri illusioni</td>
+  <td>1985</td>
+  <td>Homo $</td>
+  <td>actor</td>
+  <td>Guests</td>
+  <td>22.0</td>
+</tr>
+<tr>
+  <th>1</th>
+  <td>Battle of the Sexes</td>
+  <td>2017</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Bobby Riggs Fan</td>
+  <td>10.0</td>
+</tr>
+<tr>
+  <th>8</th>
+  <td>When the Man Went South</td>
+  <td>2014</td>
+  <td>Taipaleti 'Atu'ake</td>
+  <td>actor</td>
+  <td>Two Palms - Ua'i Paame</td>
+  <td>8.0</td>
+</tr>
+<tr>
+  <th>9</th>
+  <td>Little Angel (Angelita)</td>
+  <td>2015</td>
+  <td>Michael 'babeepower' Viera</td>
+  <td>actor</td>
+  <td>Chico</td>
+  <td>9.0</td>
+</tr>
+<tr>
+  <th>13</th>
+  <td>My Song for You</td>
+  <td>2010</td>
+  <td>George 'Bootsy' Thomas</td>
+  <td>actor</td>
+  <td>Cooley's Customer</td>
+  <td>16.0</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast.fillna(value}\OperatorTok{=-}\DecValTok{1}\NormalTok{).head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>title</th>
+  <th>year</th>
+  <th>name</th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>0</th>
+  <td>Suuri illusioni</td>
+  <td>1985</td>
+  <td>Homo $</td>
+  <td>actor</td>
+  <td>Guests</td>
+  <td>22.0</td>
+</tr>
+<tr>
+  <th>1</th>
+  <td>Battle of the Sexes</td>
+  <td>2017</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Bobby Riggs Fan</td>
+  <td>10.0</td>
+</tr>
+<tr>
+  <th>2</th>
+  <td>Secret in Their Eyes</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>2002 Dodger Fan</td>
+  <td>-1.0</td>
+</tr>
+<tr>
+  <th>3</th>
+  <td>Steve Jobs</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>1988 Opera House Patron</td>
+  <td>-1.0</td>
+</tr>
+<tr>
+  <th>4</th>
+  <td>Straight Outta Compton</td>
+  <td>2015</td>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Club Patron</td>
+  <td>-1.0</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{apply} \NormalTok{function}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  File "<ipython-input-61-38546fa829e7>", line 1
+    apply function
+                 ^
+SyntaxError: invalid syntax
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Subsetting data over observations: Analogous to SQL "WHERE"}
+\NormalTok{cast[ (cast.year }\OperatorTok{>=} \DecValTok{2000}\NormalTok{) }\OperatorTok{&} \NormalTok{(cast.year }\OperatorTok{<=} \DecValTok{2009}\NormalTok{) ].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>title</th>
+  <th>year</th>
+  <th>name</th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>6</th>
+  <td>For Thy Love 2</td>
+  <td>2009</td>
+  <td>Bee Moe $lim</td>
+  <td>actor</td>
+  <td>Thug 1</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>11</th>
+  <td>The Replacements</td>
+  <td>2000</td>
+  <td>Steven 'Bear'Boyd</td>
+  <td>actor</td>
+  <td>Defensive Tackle - Washington Sentinels</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>15</th>
+  <td>B-Girl</td>
+  <td>2009</td>
+  <td>Jesse 'Casper' Brown</td>
+  <td>actor</td>
+  <td>Battle Judge</td>
+  <td>25.0</td>
+</tr>
+<tr>
+  <th>17</th>
+  <td>Kickin' It Old Skool</td>
+  <td>2007</td>
+  <td>Jesse 'Casper' Brown</td>
+  <td>actor</td>
+  <td>Cole</td>
+  <td>10.0</td>
+</tr>
+<tr>
+  <th>21</th>
+  <td>Barrio Gangsters</td>
+  <td>2009</td>
+  <td>Marcelino 'Dibujo' Torres</td>
+  <td>actor</td>
+  <td>Dibujo</td>
+  <td>NaN</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Selecting columns: Analogous to SQL "SELECT"}
+\NormalTok{cast[ [}\StringTok{'name'}\NormalTok{, }\StringTok{'type'}\NormalTok{, }\StringTok{'character'}\NormalTok{, }\StringTok{'n'}\NormalTok{] ].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<tr style="text-align: right;">
+  <th></th>
+  <th>name</th>
+  <th>type</th>
+  <th>character</th>
+  <th>n</th>
+</tr>
+\end{verbatim}
+
+\begin{verbatim}
+<tr>
+  <th>0</th>
+  <td>Homo $</td>
+  <td>actor</td>
+  <td>Guests</td>
+  <td>22.0</td>
+</tr>
+<tr>
+  <th>1</th>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Bobby Riggs Fan</td>
+  <td>10.0</td>
+</tr>
+<tr>
+  <th>2</th>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>2002 Dodger Fan</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>3</th>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>1988 Opera House Patron</td>
+  <td>NaN</td>
+</tr>
+<tr>
+  <th>4</th>
+  <td>$hutter</td>
+  <td>actor</td>
+  <td>Club Patron</td>
+  <td>NaN</td>
+</tr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Grouping by attribute values: Analogous to SQL "GROUPBY"}
+
+\NormalTok{cast.groupby(}\StringTok{'title'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<pandas.core.groupby.DataFrameGroupBy object at 0x7f39f9959d50>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cast.groupby([}\StringTok{'title'}\NormalTok{, }\StringTok{'type'}\NormalTok{]).}\BuiltInTok{sum}\NormalTok{()[}\StringTok{'n'}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+title             type   
+#1 Serial Killer  actor      208.0
+                  actress    117.0
+#5                actor        NaN
+#50Fathers        actor        NaN
+                  actress      NaN
+Name: n, dtype: float64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Group by the values specified, and then aggregate within each group}
+\NormalTok{cast.groupby([}\StringTok{'title'}\NormalTok{, }\StringTok{'type'}\NormalTok{]).count()[}\StringTok{'n'}\NormalTok{].head()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+title             type   
+#1 Serial Killer  actor      14
+                  actress    11
+#5                actor       0
+#50Fathers        actor       0
+                  actress     0
+Name: n, dtype: int64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r }\OperatorTok{=} \NormalTok{releasedate}
+\NormalTok{r }\OperatorTok{=} \NormalTok{r[(r.title.}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"Christmas"}\NormalTok{))]}
+\NormalTok{r }\OperatorTok{=} \NormalTok{r[(r.country }\OperatorTok{==} \StringTok{"USA"}\NormalTok{) }\OperatorTok{|} \NormalTok{(r.country }\OperatorTok{==} \StringTok{"Japan"}\NormalTok{) }\OperatorTok{|} \NormalTok{(r.country }\OperatorTok{==} \StringTok{"Australia"}\NormalTok{)]}
+\NormalTok{g }\OperatorTok{=} \NormalTok{r.groupby( [r.date.dt.month, }\StringTok{'country'}\NormalTok{] ).size()}
+\NormalTok{h }\OperatorTok{=} \NormalTok{g.unstack(}\StringTok{'country'}\NormalTok{)}
+
+\NormalTok{axis }\OperatorTok{=} \NormalTok{h.plot.bar(ylim}\OperatorTok{=}\NormalTok{[}\DecValTok{0}\NormalTok{,}\DecValTok{40}\NormalTok{], title}\OperatorTok{=}\StringTok{"Number of Christmas Movies Released by Month"}\NormalTok{)}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{Untitled_files/Untitled_27_0.png}
+\caption{png}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, axis }\OperatorTok{=} \NormalTok{matplotlib.pyplot.subplots(nrows}\OperatorTok{=}\DecValTok{1}\NormalTok{, ncols}\OperatorTok{=}\DecValTok{3}\NormalTok{)}
+
+\ControlFlowTok{for} \NormalTok{i }\OperatorTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{):}
+    \NormalTok{h.iloc[:,i].plot.bar(ax}\OperatorTok{=}\NormalTok{axis[i], title}\OperatorTok{=}\NormalTok{h.columns.values[i])}
+
+\NormalTok{fig.suptitle(}\StringTok{'Number of Christmas Movies Released by Month'}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{10}\NormalTok{)}
+\NormalTok{fig.tight_layout()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{Untitled_files/Untitled_28_0.png}
+\caption{png}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{c }\OperatorTok{=} \NormalTok{cast}
+\NormalTok{c }\OperatorTok{=} \NormalTok{c[(c.n }\OperatorTok{>=}\DecValTok{1}\NormalTok{) }\OperatorTok{&} \NormalTok{(c.n }\OperatorTok{<=} \DecValTok{3}\NormalTok{)]}
+\NormalTok{g }\OperatorTok{=} \NormalTok{c.groupby([}\StringTok{'n'}\NormalTok{, }\StringTok{'year'}\NormalTok{, }\StringTok{'type'}\NormalTok{]).size()}
+\NormalTok{g }\OperatorTok{=} \NormalTok{g.unstack(}\StringTok{'type'}\NormalTok{)}
+\NormalTok{g }\OperatorTok{=} \NormalTok{g.fillna(}\DecValTok{0}\NormalTok{)}
+\NormalTok{g }\OperatorTok{=} \NormalTok{g.actor }\OperatorTok{/} \NormalTok{(g.actor }\OperatorTok{+} \NormalTok{g.actress)}
+
+\NormalTok{h }\OperatorTok{=} \NormalTok{g.unstack(}\StringTok{'n'}\NormalTok{)}
+\NormalTok{h }\OperatorTok{=} \NormalTok{h[}\DecValTok{5}\NormalTok{:}\OperatorTok{-}\DecValTok{5}\NormalTok{]   }\CommentTok{#Take out the edges with "weird" data}
+
+\NormalTok{fig, axis }\OperatorTok{=} \NormalTok{matplotlib.pyplot.subplots(nrows}\OperatorTok{=}\DecValTok{1}\NormalTok{, ncols}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{h.plot.line(ax}\OperatorTok{=}\NormalTok{axis, title}\OperatorTok{=}\StringTok{"Percentage of lead, supporting actors that are Men"}\NormalTok{)}
+\NormalTok{axis.set_ylim(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{matplotlib.pyplot.axhline(y}\OperatorTok{=}\NormalTok{.}\DecValTok{5}\NormalTok{, xmin}\OperatorTok{=}\DecValTok{0}\NormalTok{, xmax}\OperatorTok{=}\DecValTok{1}\NormalTok{, hold}\OperatorTok{=}\VariableTok{None}\NormalTok{, linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{, color}\OperatorTok{=}\StringTok{'k'}\NormalTok{)}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<matplotlib.lines.Line2D at 0x7f396fc07990>
+\end{verbatim}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{Untitled_files/Untitled_29_1.png}
+\caption{png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{this is the standard import if you're using ``formula
+notation'' (similar to R)}
+
+import statsmodels.formula.api as smf
+
+\end{frame}
+
+\begin{frame}{create a fitted model in one line}
+
+lm = smf.ols(formula=`57 \textasciitilde{} .', data=spamdata).fit()
+
+\end{frame}
+
+\begin{frame}{print the coefficients}
+
+lm.params
+
+\end{frame}
+
+\begin{frame}[fragile]{use the model to make predictions on a new value}
+
+lm.predict(X\_new)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\end{document}
